@@ -1,46 +1,113 @@
-# Getting Started with Create React App
+# 🧩 DAG Editor with React Flow
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple and interactive Directed Acyclic Graph (DAG) editor built using [React Flow](https://reactflow.dev/), allowing users to create, connect, and visualize workflows or data pipelines.
 
-## Available Scripts
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- ✅ Add custom nodes dynamically
+- ✅ Connect nodes with edges
+- ✅ Auto-layout support (Top-Bottom or Left-Right)
+- ✅ Validate whether the graph is a valid DAG
+- ✅ Undo/Redo functionality
+- ✅ Live JSON preview of the current DAG structure
+- ✅ Responsive and modern UI layout
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+## 📦 Technologies Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [React](https://reactjs.org/)
+- [React Flow](https://reactflow.dev/)
+- [Dagre](https://github.com/dagrejs/dagre) – For automatic graph layout
+- TypeScript
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠️ Setup Instructions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1. Clone the repository
 
-### `npm run eject`
+```bash
+git clone https://github.com/rohit-ayadav/dag-editor.git
+cd dag-editor
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 2. Install dependencies
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+# or
+yarn install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 3. Run the app
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+npm start
+# or
+yarn start
+```
 
-## Learn More
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the DAG editor.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🧩 Core Features Explained
+
+| Feature | Description |
+|--------|-------------|
+| **Add Node** | Dynamically add new nodes by clicking the "Add Node" button or pressing `Ctrl/Cmd + N` |
+| **Connect Nodes** | Drag from one node to another to create an edge |
+| **Auto Layout** | Use the "Auto Layout" button to arrange all nodes automatically using Dagre |
+| **Validate DAG** | Automatically checks if the graph contains cycles |
+| **Undo/Redo** | Use `Ctrl/Cmd + Z` to undo and `Ctrl/Cmd + Shift + Z` to redo actions |
+| **Live JSON Preview** | Toggle JSON panel to see real-time representation of the graph |
+| **Delete Selection** | Select nodes or edges and press `Backspace` or `Delete` to remove them |
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── component/
+│   └── CustomNode.tsx       # Custom node component
+├── utils/
+│   ├── validateDAG.ts        # Validates that the graph is a DAG
+│   └── applyAutoLayout.ts    # Applies layout using Dagre
+├── App.tsx                   # Main application logic
+└── index.tsx                 # Entry point
+```
+
+---
+
+## 📜 Scripts
+
+| Script | Description |
+|-------|-------------|
+| `npm start` | Runs the development server |
+| `npm run build` | Builds the production version |
+| `npm test` | Runs tests (if applicable) |
+| `npm run lint` | Lints code (if ESLint/Prettier is configured) |
+
+---
+
+## 📬 Contact
+
+If you have any questions or feedback, feel free to reach out:
+
+👤 **Rohit Yadav**  
+📧 Email: rohitkuyada@gmail.com
+🐦 Twitter: [@rohitayadav](https://twitter.com/rohitayadav)  
+🐙 GitHub: [https://github.com/rohit-ayadav](https://github.com/rohit-ayadav)
+
+---
+
+## 🌟 Acknowledgments
+
+- Thanks to [React Flow](https://reactflow.dev/) for providing such a powerful visualization library.
+- Inspired by workflow editors like Airflow, Prefect, and AWS Step Functions.
