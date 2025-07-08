@@ -3,3 +3,8 @@ body {
     font-family: sans-serif;
     background-color: #f4f4f4;
 }
+
+.invalid-edge {
+    stroke: #ff4d4d !important;
+    stroke-width: 2px !important;
+}
