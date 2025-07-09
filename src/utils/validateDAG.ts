@@ -18,19 +18,26 @@ export function validateDAG(nodes: Node[], edges: Edge[]): ValidationResult {
     const graph: Record<string, string[]> = {};
     const invalidEdges: string[] = [];
 
+    // Initialize graph structure with empty adjacency lists
     nodes.forEach((node) => {
         graph[node.id] = [];
     });
 
+    // Check 1st condition: no duplicate edges
+
+
     // Check self-loops and build graph
     for (const edge of edges) {
         if (edge.source === edge.target) {
-            invalidEdges.push(edge.id);
+            invalidEdges.push(edge.id); // self-loop detected
+            continue;
         } else {
             graph[edge.source]?.push(edge.target);
         }
     }
 
+
+    // Check 2nd condition: no cycles using DFS
     const visited = new Set<string>();
     const recStack = new Set<string>();
     const cycleEdges = new Set<string>();
@@ -40,19 +47,23 @@ export function validateDAG(nodes: Node[], edges: Edge[]): ValidationResult {
             visited.add(nodeId);
             recStack.add(nodeId);
 
+            // Visit all neighbors
             for (const neighbor of graph[nodeId]) {
                 if (!visited.has(neighbor) && dfs(neighbor)) {
+                    // Cycle detected between nodeId and neighbor
                     const cycleEdge = edges.find(e => e.source === nodeId && e.target === neighbor);
                     if (cycleEdge) cycleEdges.add(cycleEdge.id);
                     return true;
                 }
                 if (recStack.has(neighbor)) {
+                    // Cycle detected in the recursion stack
                     const cycleEdge = edges.find(e => e.source === nodeId && e.target === neighbor);
                     if (cycleEdge) cycleEdges.add(cycleEdge.id);
                     return true;
                 }
             }
         }
+        // Remove from recursion stack
         recStack.delete(nodeId);
         return false;
     }
@@ -63,8 +74,12 @@ export function validateDAG(nodes: Node[], edges: Edge[]): ValidationResult {
         }
     }
 
-    invalidEdges.push(...Array.from(cycleEdges));
+    // If cycle edges were found, add them to invalid edges
+    if (cycleEdges.size > 0) {
+        invalidEdges.push(...Array.from(cycleEdges));
+    }
 
+    // Check 3rd condition: all nodes must be connected
     const connectedNodes = new Set<string>();
     for (const edge of edges) {
         connectedNodes.add(edge.source);
