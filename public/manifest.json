@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "DAG Editor",
+  "name": "Visual DAG Pipeline Editor",
+  "description": "A drag-and-drop interface to build and validate Directed Acyclic Graph pipelines with auto layout, undo/redo, and JSON export.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +19,10 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#0d1117",
+  "background_color": "#ffffff",
+  "lang": "en"
 }

@@ -1,17 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState, useMemo } from 'react';
-import ReactFlow, {
-  addEdge,
-  Background,
-  Controls,
-  MiniMap,
-  useNodesState,
-  useEdgesState,
-  Connection,
-  Edge,
-  Node,
-  MarkerType,
-  ReactFlowProvider,
-} from 'reactflow';
+import ReactFlow, {  addEdge,  Background,  Controls,  MiniMap,  useNodesState,  useEdgesState,  Connection,  Edge,  Node,  MarkerType,  ReactFlowProvider,} from 'reactflow';
 import 'reactflow/dist/style.css';
 import CustomNode from './component/CustomNode';
 import { validateDAG } from './utils/validateDAG';
@@ -19,12 +7,9 @@ import { applyAutoLayout } from './utils/applyAutoLayout';
 import useKeyboardShortcuts from './hooks/useKeyboardShortcut';
 import isEqual from 'lodash.isequal';
 
-
 const nodeTypes = {
   custom: CustomNode,
 };
-
-
 
 const App = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
