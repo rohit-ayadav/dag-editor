@@ -1,6 +1,6 @@
 import { Handle, Position } from 'reactflow';
 
-const CustomNode = ({ data }: any) => {
+const CustomNode = ({ data }: { data: { label: string } }) => {
     return (
         <div
             style={{
