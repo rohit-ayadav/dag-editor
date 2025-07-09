@@ -17,11 +17,7 @@ type Node = RFNode & {
  * @param direction - Layout direction: 'LR' (Left to Right) or 'TB' (Top to Bottom)
  * @returns Updated nodes with calculated positions
  */
-export const applyAutoLayout = (
-    nodes: Node[],
-    edges: Edge[],
-    direction: 'LR' | 'TB' = 'TB'
-): Node[] => {
+export const applyAutoLayout = (nodes: Node[], edges: Edge[], direction: 'LR' | 'TB' = 'TB'): Node[] => {
     if (!nodes.length) return [];
 
     // Initialize Dagre graph
@@ -61,14 +57,14 @@ export const applyAutoLayout = (
         return nodes; // Fallback to original positions
     }
 
-    // Update node positions based on layout
+    // Update node positions based on Dagre layout
     return nodes.map((node) => {
         const { x, y } = dagreGraph.node(node.id);
 
         return {
             ...node,
             position: {
-                x: x - (node.measured?.width ?? defaultNodeWidth) / 2,
+                x: x - (node.measured?.width ?? defaultNodeWidth) / 2, 
                 y: y - (node.measured?.height ?? defaultNodeHeight) / 2,
             },
             sourcePosition: isHorizontal ? Position.Right : Position.Bottom,
